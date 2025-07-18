@@ -1,6 +1,7 @@
 {
-	"name": "Extraction population",
+	"name": "Extraction Blob Storage",
 	"properties": {
+		"description": "Data ingestion from Azure Blob Storage",
 		"activities": [
 			{
 				"name": "Check if file exists",
@@ -36,8 +37,8 @@
 					},
 					"ifTrueActivities": [
 						{
-							"name": "Extraction population",
-							"description": "Data extraction from Azure Blob Storage",
+							"name": "Extraction Blob Storage",
+							"description": "Data ingestion from Azure Blob Storage",
 							"type": "Copy",
 							"dependsOn": [],
 							"policy": {
@@ -285,6 +286,7 @@
 					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
+						"recursive": true,
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {

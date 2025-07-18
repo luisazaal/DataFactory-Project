@@ -1,9 +1,14 @@
 {
-	"name": "ds_raw_dw_population",
+	"name": "ds_raw_dw_ecdc",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ls_project_dw",
 			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"sinkFileName": {
+				"type": "string"
+			}
 		},
 		"folder": {
 			"name": "raw"
@@ -13,8 +18,14 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "population_by_age.tsv",
-				"folderPath": "population_by_age",
+				"fileName": {
+					"value": "@dataset().sinkFileName",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@replace(dataset().sinkFileName, '.csv','')",
+					"type": "Expression"
+				},
 				"fileSystem": "raw"
 			},
 			"columnDelimiter": ",",

@@ -2,7 +2,7 @@
 	"name": "ds_raw_dl_population",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "ls_raw_dl_population",
+			"referenceName": "ls_project_dl",
 			"type": "LinkedServiceReference"
 		},
 		"folder": {
