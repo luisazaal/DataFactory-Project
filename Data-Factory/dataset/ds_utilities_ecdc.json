@@ -1,0 +1,22 @@
+{
+	"name": "ds_utilities_ecdc",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_project_dw",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "utilities"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "github_ecdc_file_list.json",
+				"fileSystem": "utilities"
+			}
+		},
+		"schema": {}
+	}
+}

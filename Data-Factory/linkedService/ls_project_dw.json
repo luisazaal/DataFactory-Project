@@ -1,11 +1,10 @@
 {
-	"name": "ls_raw_dl_population",
+	"name": "ls_project_dw",
 	"properties": {
 		"annotations": [],
-		"type": "AzureBlobStorage",
+		"type": "AzureBlobFS",
 		"typeProperties": {
-			"serviceEndpoint": "https://datalakeprojectc19.blob.core.windows.net/",
-			"accountKind": "StorageV2"
+			"url": "https://datawarehouseprojectc19.dfs.core.windows.net/"
 		},
 		"connectVia": {
 			"referenceName": "AutoResolveIntegrationRuntime",
