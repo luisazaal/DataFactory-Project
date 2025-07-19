@@ -5,6 +5,9 @@
 			"referenceName": "ls_project_dw",
 			"type": "LinkedServiceReference"
 		},
+		"folder": {
+			"name": "utilities"
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
