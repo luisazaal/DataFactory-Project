@@ -1,9 +1,23 @@
 {
-	"name": "DelimitedText1",
+	"name": "ds_raw_http_ecdc",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "HttpServer1",
-			"type": "LinkedServiceReference"
+			"referenceName": "ls_project_http",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"sourceBaseURL": {
+					"value": "@dataset().sourceBaseURL",
+					"type": "Expression"
+				}
+			}
+		},
+		"parameters": {
+			"sourceBaseURL": {
+				"type": "string"
+			},
+			"sourceRelativeURL": {
+				"type": "string"
+			}
 		},
 		"folder": {
 			"name": "raw"
@@ -12,7 +26,11 @@
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
-				"type": "HttpServerLocation"
+				"type": "HttpServerLocation",
+				"relativeUrl": {
+					"value": "@dataset().sourceRelativeURL",
+					"type": "Expression"
+				}
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
