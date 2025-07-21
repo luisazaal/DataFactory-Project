@@ -1,0 +1,28 @@
+{
+	"name": "ds_raw_dl_population",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_project_dl",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "raw"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "population_by_age.tsv.gz",
+				"container": "raw"
+			},
+			"columnDelimiter": "\t",
+			"compressionCodec": "gzip",
+			"compressionLevel": "Optimal",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}

@@ -1,0 +1,27 @@
+{
+	"name": "ds_raw_dw_population",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_project_dw",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "raw"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "population_by_age.tsv",
+				"folderPath": "population_by_age",
+				"fileSystem": "raw"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
