@@ -5,8 +5,7 @@
 		"type": "AzureFunction",
 		"typeProperties": {
 			"functionAppUrl": "https://functionapp-project-c19.azurewebsites.net",
-			"authentication": "MSI",
-			"resourceId": "",
+			"authentication": "Anonymous",
 			"functionKey": {
 				"type": "AzureKeyVaultSecret",
 				"store": {
