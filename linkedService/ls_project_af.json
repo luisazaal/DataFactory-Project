@@ -1,0 +1,24 @@
+{
+	"name": "ls_project_af",
+	"properties": {
+		"annotations": [],
+		"type": "AzureFunction",
+		"typeProperties": {
+			"functionAppUrl": "functionapp-project-c19.azurewebsites.net",
+			"authentication": "MSI",
+			"resourceId": "",
+			"functionKey": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "ls_project_kv",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "kv-connectionstring-datawarehouseprojectc19"
+			}
+		},
+		"connectVia": {
+			"referenceName": "AutoResolveIntegrationRuntime",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
