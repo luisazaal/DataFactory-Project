@@ -4,7 +4,7 @@
 		"annotations": [],
 		"type": "AzureFunction",
 		"typeProperties": {
-			"functionAppUrl": "functionapp-project-c19.azurewebsites.net",
+			"functionAppUrl": "https://functionapp-project-c19.azurewebsites.net",
 			"authentication": "MSI",
 			"resourceId": "",
 			"functionKey": {
