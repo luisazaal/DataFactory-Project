@@ -54,6 +54,27 @@
 					"referenceName": "ls_project_af",
 					"type": "LinkedServiceReference"
 				}
+			},
+			{
+				"name": "Transformation Population",
+				"type": "AzureFunctionActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"functionName": "population_table",
+					"method": "GET"
+				},
+				"linkedServiceName": {
+					"referenceName": "ls_project_af",
+					"type": "LinkedServiceReference"
+				}
 			}
 		],
 		"folder": {
