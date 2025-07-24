@@ -1,0 +1,10 @@
+{
+	"name": "ls_project_kv",
+	"properties": {
+		"annotations": [],
+		"type": "AzureKeyVault",
+		"typeProperties": {
+			"baseUrl": "https://KeyVault-Project-C19.vault.azure.net/"
+		}
+	}
+}
