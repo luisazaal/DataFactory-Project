@@ -1,0 +1,67 @@
+{
+	"name": "ds_sql_population",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_project_sql",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "sql"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "country",
+				"type": "varchar"
+			},
+			{
+				"name": "country_code_2_digit",
+				"type": "varchar"
+			},
+			{
+				"name": "country_code_3_digit",
+				"type": "varchar"
+			},
+			{
+				"name": "population",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "age_group_0_14",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "age_group_15_24",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "age_group_25_49",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "age_group_50_64",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "age_group_65_79",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "age_group_80_max",
+				"type": "float",
+				"precision": 15
+			}
+		],
+		"typeProperties": {
+			"schema": "covid_reporting",
+			"table": "population"
+		}
+	}
+}
