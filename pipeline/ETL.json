@@ -19,7 +19,7 @@
 				}
 			},
 			{
-				"name": "Transformation ",
+				"name": "Transformation",
 				"type": "ExecutePipeline",
 				"dependsOn": [
 					{
@@ -46,7 +46,7 @@
 				"type": "ExecutePipeline",
 				"dependsOn": [
 					{
-						"activity": "Transformation ",
+						"activity": "Transformation",
 						"dependencyConditions": [
 							"Succeeded"
 						]

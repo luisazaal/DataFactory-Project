@@ -1,0 +1,27 @@
+{
+	"name": "ds_processed_population",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_project_dw",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "processed"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "population.csv",
+				"folderPath": "population",
+				"fileSystem": "processed"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
