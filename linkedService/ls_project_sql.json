@@ -1,0 +1,27 @@
+{
+	"name": "ls_project_sql",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"server": "sqlserver-project-c19.database.windows.net",
+			"database": "SQLDB-Project-C19",
+			"encrypt": "mandatory",
+			"trustServerCertificate": false,
+			"authenticationType": "SQL",
+			"userName": "admin-sqlserver",
+			"password": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "ls_project_kv",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "kv-password-sqldb"
+			}
+		},
+		"connectVia": {
+			"referenceName": "AutoResolveIntegrationRuntime",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
