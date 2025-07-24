@@ -1,0 +1,85 @@
+{
+	"name": "Transformation",
+	"properties": {
+		"activities": [
+			{
+				"name": "Transformation Cases Deaths",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Transformation Cases Deaths",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "Transformation Hospital Admissions",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Transformation Hospital Admissions",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "Transformation Testing",
+				"type": "AzureFunctionActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"functionName": "testing_table",
+					"method": "GET"
+				},
+				"linkedServiceName": {
+					"referenceName": "ls_project_af",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Transformation Population",
+				"type": "AzureFunctionActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"functionName": "population_table",
+					"method": "GET"
+				},
+				"linkedServiceName": {
+					"referenceName": "ls_project_af",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"folder": {
+			"name": "ETL"
+		},
+		"annotations": []
+	}
+}

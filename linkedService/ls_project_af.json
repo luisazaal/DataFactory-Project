@@ -1,0 +1,23 @@
+{
+	"name": "ls_project_af",
+	"properties": {
+		"annotations": [],
+		"type": "AzureFunction",
+		"typeProperties": {
+			"functionAppUrl": "https://functionapp-project-c19.azurewebsites.net",
+			"authentication": "Anonymous",
+			"functionKey": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "ls_project_kv",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "kv-functionkey-azurefunction"
+			}
+		},
+		"connectVia": {
+			"referenceName": "AutoResolveIntegrationRuntime",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
