@@ -19,7 +19,7 @@
 				}
 			},
 			{
-				"name": "Transformation Load",
+				"name": "Transformation ",
 				"type": "ExecutePipeline",
 				"dependsOn": [
 					{
@@ -36,6 +36,29 @@
 				"typeProperties": {
 					"pipeline": {
 						"referenceName": "Transformation",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "Load",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Transformation ",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Load",
 						"type": "PipelineReference"
 					},
 					"waitOnCompletion": true
