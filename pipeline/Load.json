@@ -520,7 +520,7 @@
 					"sink": {
 						"type": "AzureSqlSink",
 						"preCopyScript": {
-							"value": "TRUNCATE TABLE covid_reporting.testing",
+							"value": "TRUNCATE TABLE covid_reporting.population",
 							"type": "Expression"
 						},
 						"writeBehavior": "insert",
