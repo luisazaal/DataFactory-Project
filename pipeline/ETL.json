@@ -35,7 +35,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"pipeline": {
-						"referenceName": "Transformation Load",
+						"referenceName": "Transformation",
 						"type": "PipelineReference"
 					},
 					"waitOnCompletion": true
