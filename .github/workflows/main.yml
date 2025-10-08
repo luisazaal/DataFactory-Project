@@ -1,0 +1,83 @@
+Create build/package.json file in the repo with this code:
+
+{
+    "scripts":{
+        "build":"node node_modules/@microsoft/azure-data-factory-utilities/lib/index"
+    },
+    "dependencies":{
+        "@microsoft/azure-data-factory-utilities":"^1.0.0"
+    }
+}
+
+Save as build
+.................................
+Set up a workflow in the action tab of the repo using this code
+
+name: datafactory-project
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+
+      - name: Install ADF Utilities package
+        run: npm install
+        working-directory: ${{ github.workspace }}/build
+
+      - name: Validate ADF resources
+        run: npm run build validate ${{ github.workspace }}/ /subscriptions/${{ secrets.AAZUREAPPSERVICE_SUBSCRIPTIONID_3AF4D5FCD0CD4F0D8676FC78ADCF9962 }}/resourceGroups/ResourceGroup-Project-C19/providers/Microsoft.DataFactory/factories/DataFactory-Project-C19
+        working-directory: ${{ github.workspace }}/build
+
+      - name: Validate and Generate ARM template
+        run: npm run build export ${{ github.workspace }}/ /subscriptions/${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_3AF4D5FCD0CD4F0D8676FC78ADCF9962 }}/resourceGroups/ResourceGroup-Project-C19/providers/Microsoft.DataFactory/factories/DataFactory-Project-C19 ExportedArmTemplate
+        working-directory: ${{ github.workspace }}/build
+
+      - name: Upload ARM template artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ExportedArmTemplate
+          path: ${{ github.workspace }}/build/ExportedArmTemplate
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: ExportedArmTemplate
+
+      - name: Azure login
+        uses: azure/login@v1
+        with:
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_A9DA002C97104B70AB5721D4AE5971D0 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_4E5FF1EC07E246B6829BF59B7D3E7042 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_3AF4D5FCD0CD4F0D8676FC78ADCF9962 }}
+          enable-AzPSSession: true
+
+      - name: Deploy to Data Factory
+        uses: Azure/data-factory-deploy-action@v1.2.0
+        with:
+          resourceGroupName: ResourceGroup-Project-C19-TEST
+          dataFactoryName: DataFactory-Project-C19-TEST
+          armTemplateFile: ARMTemplateForFactory.json
+          armTemplateParametersFile: ARMTemplateParametersForFactory.json
+          # additionalParameters: 'factoryName=Test-ADF-111' # optional, if needed for dynamic replacements
+
+................
